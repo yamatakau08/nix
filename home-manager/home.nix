@@ -103,9 +103,8 @@
     # unfree package
     ./appcleaner.nix
 
-    # Can't install GUI app via home-manager
     ./vlc-bin.nix # on Mac, use `-bin` package
-    ./musescore.nix # Comment, because getting an installation error
+    ./musescore.nix
     #./wireshark.nix # Comment, because getting an installation error
   ];
 }
