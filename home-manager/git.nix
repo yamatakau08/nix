@@ -3,6 +3,7 @@
 {
   programs.git = {
     enable = true;
+
     settings = {
       core = {
         editor = "vi";
@@ -12,5 +13,7 @@
         name = "yamatakau08";
       };
     };
+
+    ignores = [ ".DS_Store" ];
   };
 }
