@@ -105,6 +105,6 @@
 
     ./vlc-bin.nix # on Mac, use `-bin` package
     ./musescore.nix
-    #./wireshark.nix # Comment, because getting an installation error
+    ./wireshark.nix
   ];
 }
