@@ -99,7 +99,8 @@
     ./vhs.nix
     ./pythonPackage.grip.nix
     ./pythonPackage.pip.nix
-
+    ./hunspell.nix
+    ./wget.nix
     # unfree package
     ./appcleaner.nix
 
