@@ -90,7 +90,7 @@
     ./gemini-cli.nix
     ./git.nix
     ./gtypist.nix
-    ./ollama.nix
+    # ./ollama.nix
     ./audacity.nix
     ./python314.nix
     ./ffmpeg.nix
@@ -101,7 +101,8 @@
     ./pythonPackage.pip.nix
     ./hunspell.nix
     ./wget.nix
-    # unfree package
+    # the following unfree package
+    # ./claude-code.nix # need account
     ./appcleaner.nix
 
     ./vlc-bin.nix # on Mac, use `-bin` package

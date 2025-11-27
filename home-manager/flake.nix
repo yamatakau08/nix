@@ -28,6 +28,7 @@
             pkg:
             builtins.elem (pkgs.lib.getName pkg) [
               "appcleaner"
+              # "claude-code"
             ];
         };
       };
