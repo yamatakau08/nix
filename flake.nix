@@ -23,7 +23,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, user-home, user-darwin, ... }@inputs: {
+  outputs = { self, nixpkgs, user-home, user-darwin, ... }: {
     # Re-export the home-manager configurations from your user-home flakes.
     inherit (user-home) homeConfigurations;
 
