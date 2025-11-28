@@ -4,7 +4,9 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)"
+      if type -q brew
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      end
 
       if type -q direnv
          direnv hook fish | source
