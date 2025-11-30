@@ -155,4 +155,9 @@
     };
   };
 
+  fonts = {
+    fonts = with pkgs; [
+      notonoto-hs
+    ];
+  };
 }
