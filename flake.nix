@@ -21,9 +21,12 @@
       # Ensure the nix-darwin flake uses the same nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # for NixOS
+    xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, user-home, user-darwin, ... }: {
+  outputs = { self, nixpkgs, user-home, user-darwin, ... }@inputs: {
     # Re-export the home-manager configurations from your user-home flakes.
     inherit (user-home) homeConfigurations;
 
@@ -33,5 +36,15 @@
     # Note: Use the original flakes directly for actual commands:
     # cd ~/.config/nix-darwin && darwin-rebuild switch --flake .#roswell
     # cd ~/.config/home-manager && home-manager switch --flake .
+
+    nixosConfigurations = {
+      tnt = nixpkgs.lib.nixosSystem {
+	system = "x86_64-linux";
+	modules = [
+	  ./nixos/configuration.nix
+	];
+	specialArgs = { inherit inputs; };
+      };
+    };
   };
 }
