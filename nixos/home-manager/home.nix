@@ -78,5 +78,7 @@
     ../../home-manager/git.nix
     ../../home-manager/fish.nix
     ../../home-manager/vim.nix
+    ../../home-manager/emacs-gtk.nix
+    ../../home-manager/chromium.nix
   ];
 }
