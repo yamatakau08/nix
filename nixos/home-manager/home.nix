@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -74,12 +74,18 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  imports = [
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "obsidian"
+    ];
+
+    imports = [
     ../../home-manager/git.nix
     ../../home-manager/fish.nix
     ../../home-manager/vim.nix
     ../../home-manager/emacs-gtk.nix
     ../../home-manager/chromium.nix
     ../../home-manager/google-drive-ocamlfuse.nix
+    ../../home-manager/obsidian.nix
   ];
 }
