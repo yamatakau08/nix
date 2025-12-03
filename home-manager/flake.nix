@@ -37,6 +37,7 @@
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
+        # Optionally use extraSpecialArgs
         # to pass through these arguments to home.nix
         extraSpecialArgs = {
           inherit username homeDirectory;
@@ -48,9 +49,6 @@
           mac-app-util.homeManagerModules.default
           ./home.nix
         ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
     };
 }
