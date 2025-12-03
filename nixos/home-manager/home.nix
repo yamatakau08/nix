@@ -80,5 +80,6 @@
     ../../home-manager/vim.nix
     ../../home-manager/emacs-gtk.nix
     ../../home-manager/chromium.nix
+    ../../home-manager/google-drive-ocamlfuse.nix
   ];
 }
