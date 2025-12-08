@@ -39,11 +39,11 @@
 
     nixosConfigurations = {
       tnt = nixpkgs.lib.nixosSystem {
-	system = "x86_64-linux";
+        system = "x86_64-linux";
 	modules = [
 	  ./nixos/configuration.nix
-	];
-	specialArgs = { inherit inputs; };
+        ];
+        specialArgs = { inherit inputs; };
       };
     };
   };
