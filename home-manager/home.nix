@@ -90,7 +90,7 @@
     ./gemini-cli.nix
     ./git.nix
     ./gtypist.nix
-    # ./ollama.nix
+    ./ollama.nix
     ./audacity.nix
     ./python314.nix
     ./ffmpeg.nix
