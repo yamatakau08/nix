@@ -101,6 +101,7 @@
     ./pythonPackage.pip.nix
     ./hunspell.nix
     ./wget.nix
+    ./zenn-cli.nix
     # the following unfree package
     # ./claude-code.nix # need account
     ./appcleaner.nix
