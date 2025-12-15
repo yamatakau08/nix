@@ -18,10 +18,10 @@
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      username = "yama";
-      homeDirectory = "/Users/${username}";
-
       isDarwin = pkgs.stdenv.isDarwin;
+
+      username = "yama";
+      homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
 
     in
     {
