@@ -1,4 +1,4 @@
-{ config, pkgs, username, homeDirectory, ... }:
+{ config, pkgs, lib, username, homeDirectory, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -73,6 +73,12 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # for unfree pacakges
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "appcleaner"
+    ];
 
   imports = [
     ./fish.nix

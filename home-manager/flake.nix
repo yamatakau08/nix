@@ -16,22 +16,10 @@
     { nixpkgs, home-manager, mac-app-util, ... }:
     let
       system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+
       username = "yama";
       homeDirectory = "/Users/${username}";
-
-      # pkgs = nixpkgs.legacyPackages.${system}; # this is included by the following `inherit system;`
-      # for unfree pacakges
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfreePredicate =
-            pkg:
-            builtins.elem (pkgs.lib.getName pkg) [
-              "appcleaner"
-              # "claude-code"
-            ];
-        };
-      };
     in
     {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
