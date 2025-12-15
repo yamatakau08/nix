@@ -32,16 +32,13 @@
         # to pass through these arguments to home.nix
         extraSpecialArgs = {
           inherit username homeDirectory;
+          inherit isDarwin;
         };
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = if isDarwin then [
-          mac-app-util.homeManagerModules.default
-          ./home.nix
-        ] else [
-          ./home.nix
-        ];
+        modules = [ ./home.nix ]
+                  ++ ( if isDarwin then [ mac-app-util.homeManagerModules.default ] else []);
       };
     };
 }

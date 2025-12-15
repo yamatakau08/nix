@@ -1,4 +1,4 @@
-{ config, pkgs, lib, username, homeDirectory, ... }:
+{ config, pkgs, lib, username, homeDirectory, isDarwin, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -77,15 +77,18 @@
   # for unfree pacakges
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) (
-      if pkgs.stdenv.isDarwin then
+      if isDarwin then
         [ "appcleaner" ]
       else
         [ "obsidian" ]
     );
 
   imports = [
+    # common imports for both Darwin and Linux
     ./fish.nix
     ./emacs-gtk.nix
+    ./git.nix
+  ] ++ lib.optionals isDarwin [
     ./wezterm.nix
     ./mpv.nix
     ./yt-dlp.nix
@@ -97,7 +100,9 @@
     ./scrcpy.nix
     ./anki-bin.nix
     ./gemini-cli.nix
-    ./git.nix
+    ./vlc-bin.nix # on Mac, use `-bin` package
+    ./musescore.nix
+    ./wireshark.nix
     ./gtypist.nix
     ./ollama.nix
     ./audacity.nix
@@ -111,12 +116,14 @@
     ./hunspell.nix
     ./wget.nix
     ./zenn-cli.nix
-    # the following unfree package
-    # ./claude-code.nix # need account
-    ./appcleaner.nix
 
-    ./vlc-bin.nix # on Mac, use `-bin` package
-    ./musescore.nix
-    ./wireshark.nix
+    # the following unfree package
+    ./appcleaner.nix
+  ] ++ lib.optionals (!isDarwin) [
+    ./vim.nix
+    ./chromium.nix
+    ./obsidian.nix
+    ./google-drive-ocamlfuse.nix
   ];
+
 }
