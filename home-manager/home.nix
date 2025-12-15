@@ -76,9 +76,12 @@
 
   # for unfree pacakges
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "appcleaner"
-    ];
+    builtins.elem (lib.getName pkg) (
+      if pkgs.stdenv.isDarwin then
+        [ "appcleaner" ]
+      else
+        [ "obsidian" ]
+    );
 
   imports = [
     ./fish.nix

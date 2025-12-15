@@ -20,6 +20,9 @@
 
       username = "yama";
       homeDirectory = "/Users/${username}";
+
+      isDarwin = pkgs.stdenv.isDarwin;
+
     in
     {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
@@ -33,8 +36,10 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [
+        modules = if isDarwin then [
           mac-app-util.homeManagerModules.default
+          ./home.nix
+        ] else [
           ./home.nix
         ];
       };
