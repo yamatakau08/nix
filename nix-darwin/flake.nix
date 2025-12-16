@@ -8,53 +8,61 @@
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
-    username = "yama";
+    let
+      hostnames = {
+        roswell = {
+          username = "yama";
+          hostPlatform = "aarch64-darwin";
+        };
+      };
 
-    configuration = { pkgs, username, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
-        ];
+      configuration = systemConfig: { pkgs, username, ... }: {
+        # List packages installed in system profile. To search by name, run:
+        # $ nix-env -qaP | grep wget
+        environment.systemPackages =
+          [ pkgs.vim
+          ];
 
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
+        # Necessary for using flakes on this system.
+        nix.settings.experimental-features = "nix-command flakes";
 
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
+        # Enable alternative shell support in nix-darwin.
+        # programs.fish.enable = true;
 
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
+        # Set Git commit hash for darwin-version.
+        system.configurationRevision = self.rev or self.dirtyRev or null;
 
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 6;
+        # Used for backwards compatibility, please read the changelog before changing.
+        # $ darwin-rebuild changelog
+        system.stateVersion = 6;
 
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
+        # The platform the configuration will be used on.
+        nixpkgs.hostPlatform = systemConfig.hostPlatform;
 
-      # when execute `sudo darwin-rebuild switch --flake ~/.config/nix-darwin#roswell`,
-      # the following error appears.
-      # error: Determinate detected, aborting activation
-      # Determinate uses its own daemon to manage the Nix installation that
-      # conflicts with nix-darwin’s native Nix management.
-      # To turn off nix-darwin’s management of the Nix installation, set:
-      nix.enable = false;
-    };
+        # when execute `sudo darwin-rebuild switch --flake ~/.config/nix-darwin#roswell`,
+        # the following error appears.
+        # error: Determinate detected, aborting activation
+        # Determinate uses its own daemon to manage the Nix installation that
+        # conflicts with nix-darwin’s native Nix management.
+        # To turn off nix-darwin’s management of the Nix installation, set:
+        nix.enable = false;
+      };
+
+      # Darwin設定を生成する関数
+      mkDarwinConfiguration = hostname: systemConfig:
+        nix-darwin.lib.darwinSystem {
+          specialArgs = {
+            inherit (systemConfig) username;
+          };
+          modules = [
+            (configuration systemConfig)
+            ./fonts.nix
+            ./fish.nix
+            ./finder.nix
+          ];
+        };
   in
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#<hostname>
-    darwinConfigurations."roswell" = nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit username; };
-      modules = [
-        configuration
-        ./fonts.nix
-        ./fish.nix
-        ./finder.nix
-        #./musescore.nix
-      ];
-    };
+    darwinConfigurations = builtins.mapAttrs mkDarwinConfiguration hostnames;
   };
 }
