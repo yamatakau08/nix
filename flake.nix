@@ -20,13 +20,28 @@
       url = "path:./nix-darwin"; # pass need to copy nix-darwin under ~/.config/nix
       # Ensure the nix-darwin flake uses the same nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-darwin.follows = "nix-darwin";
+      inputs.home-manager.follows = "home-manager";
+      inputs.mac-app-util.follows = "mac-app-util";
     };
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    mac-app-util.url = "github:hraban/mac-app-util";
 
     # for NixOS
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, user-home, user-darwin, ... }@inputs: {
+  outputs = { self, nixpkgs, user-home, user-darwin, home-manager, nix-darwin, mac-app-util, ... }@inputs: {
     # Re-export the home-manager configurations from your user-home flakes.
     inherit (user-home) homeConfigurations;
 
@@ -40,8 +55,8 @@
     nixosConfigurations = {
       tnt = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-	      modules = [
-	        ./nixos/configuration.nix
+        modules = [
+          ./nixos/configuration.nix
         ];
         specialArgs = { inherit inputs; };
       };
