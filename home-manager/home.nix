@@ -75,13 +75,15 @@
   programs.home-manager.enable = true;
 
   # for unfree pacakges
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) (
-      if isDarwin then
-        [ "appcleaner" ]
-      else
-        [ "obsidian" ]
-    );
+  # comment because parent's nix file already sets `nixpkgs.config.allowUnfree = true`
+  # and suppress warnings with this setting
+  # nixpkgs.config.allowUnfreePredicate = pkg:
+  #   builtins.elem (lib.getName pkg) (
+  #     if isDarwin then
+  #       [ "appcleaner" ]
+  #     else
+  #       [ "obsidian" ]
+  #   );
 
   imports = [
     # common imports for both Darwin and Linux
