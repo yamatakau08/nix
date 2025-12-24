@@ -113,7 +113,7 @@
     ./nodejs_24.nix
     ./direnv.nix
     ./vhs.nix
-    ./pythonPackage.grip.nix
+    ./pythonPackage.grip.nix # GitHub Readme Instant Preview
     ./pythonPackage.pip.nix
     ./hunspell.nix
     ./wget.nix
