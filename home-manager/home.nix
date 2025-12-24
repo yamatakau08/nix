@@ -108,7 +108,7 @@
     ./gtypist.nix
     ./ollama.nix
     ./audacity.nix
-    ./python314.nix
+    # ./python314.nix # manage with `nix develop`, not home-manager
     ./ffmpeg.nix
     ./nodejs_24.nix
     ./direnv.nix
