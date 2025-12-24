@@ -5,7 +5,7 @@
     enable = true;
     interactiveShellInit = ''
       if type -q brew
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        eval "$(brew shellenv)"
       end
 
       if type -q direnv
