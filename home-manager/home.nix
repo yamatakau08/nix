@@ -79,6 +79,7 @@
     ./fish.nix
     ./emacs-gtk.nix
     ./git.nix
+    ./vim.nix
   ] ++ lib.optionals isDarwin [
     mac-app-util.homeManagerModules.default
 
@@ -113,7 +114,6 @@
     # the following unfree package
     ./appcleaner.nix
   ] ++ lib.optionals (!isDarwin) [
-    ./vim.nix
     ./chromium.nix
     ./obsidian.nix
     ./google-drive-ocamlfuse.nix
