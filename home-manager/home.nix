@@ -1,4 +1,4 @@
-{ config, pkgs, lib, username, homeDirectory, isDarwin, ... }:
+{ config, pkgs, lib, username, homeDirectory, isDarwin, mac-app-util, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -74,23 +74,14 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # for unfree pacakges
-  # comment because parent's nix file already sets `nixpkgs.config.allowUnfree = true`
-  # and suppress warnings with this setting
-  # nixpkgs.config.allowUnfreePredicate = pkg:
-  #   builtins.elem (lib.getName pkg) (
-  #     if isDarwin then
-  #       [ "appcleaner" ]
-  #     else
-  #       [ "obsidian" ]
-  #   );
-
   imports = [
     # common imports for both Darwin and Linux
     ./fish.nix
     ./emacs-gtk.nix
     ./git.nix
   ] ++ lib.optionals isDarwin [
+    mac-app-util.homeManagerModules.default
+
     ./wezterm.nix
     ./mpv.nix
     ./yt-dlp.nix

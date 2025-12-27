@@ -15,30 +15,38 @@
   outputs =
     { nixpkgs, home-manager, mac-app-util, ... }:
     let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-
-      isDarwin = pkgs.stdenv.isDarwin;
-
       username = "yama";
-      homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+      platforms = [ "aarch64-darwin" "x86_64-linux" ];
 
+      mkHome = system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;  # Allow unfree packages
+          };
+          isDarwin = pkgs.stdenv.isDarwin;
+          homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+        in
+          home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+
+            # Specify your home configuration modules here, for example,
+            # the path to your home.nix.
+            modules = [ ./home.nix ];
+
+            # Optionally use extraSpecialArgs
+            # to pass through these arguments to home.nix
+            extraSpecialArgs = {
+              inherit username homeDirectory isDarwin mac-app-util;
+            };
+          };
     in
-    {
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Optionally use extraSpecialArgs
-        # to pass through these arguments to home.nix
-        extraSpecialArgs = {
-          inherit username homeDirectory;
-          inherit isDarwin;
-        };
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ]
-                  ++ ( if isDarwin then [ mac-app-util.homeManagerModules.default ] else []);
+      {
+        homeConfigurations = builtins.listToAttrs (
+          map (system: {
+            name = "${username}@${system}";
+            value = mkHome system;
+          }) platforms
+        );
       };
-    };
 }
