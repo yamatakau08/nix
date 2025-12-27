@@ -1,20 +1,75 @@
 {
-  description = "NixOS config";
+  description = "NixOS configuration flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     xremap-flake.url = "github:xremap/nix-flake";
+    # mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations = {
-      tnt = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-        ];
-        specialArgs = { inherit inputs; };
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+    let
+      # host configurations
+      # ホスト名、ユーザー名、アーキテクチャをここで一括管理します
+      hosts = {
+        tnt = {
+          username = "yama";
+          platform = "x86_64-linux";
+        };
       };
+
+      # Home Manager のモジュール設定を生成する関数
+      mkHomeManagerModule = host@{ username, platform, ... }:
+        let
+          pkgs = nixpkgs.legacyPackages.${platform};
+          isDarwin = pkgs.stdenv.isDarwin;
+          homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+        in
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            inherit inputs username homeDirectory isDarwin;
+            mac-app-util = inputs.mac-app-util;
+          };
+          home-manager.users.${username} = {
+            # home.nix 側で設定が重複しないよう、ここで基礎情報を上書き
+            home.username = username;
+            home.homeDirectory = pkgs.lib.mkForce homeDirectory;
+            imports = [ ../home-manager/home.nix ];
+          };
+        };
+
+      # NixOS システムを構築する関数
+      mkNixosSystem = hostname: host@{ username, platform, ... }:
+        nixpkgs.lib.nixosSystem {
+          system = platform;
+          specialArgs = {
+            inherit inputs username hostname;
+          };
+          modules = [
+            # メインのシステム設定
+            ./configuration.nix
+
+            # Home Manager の統合
+            home-manager.nixosModules.home-manager
+
+            # ユーザー環境設定モジュールを適用
+            (mkHomeManagerModule host)
+
+            # 必要に応じて追加のモジュールをここに記述
+            # inputs.xremap-flake.nixosModules.default
+          ];
+        };
+    in
+    {
+      # sudo nixos-rebuild switch --flake .#tnt で実行
+      nixosConfigurations = builtins.mapAttrs mkNixosSystem hosts;
     };
-  };
 }
