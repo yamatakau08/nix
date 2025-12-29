@@ -13,7 +13,7 @@
     # mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
       # host configurations
       # ホスト名、ユーザー名、アーキテクチャをここで一括管理します
@@ -58,7 +58,7 @@
             ./configuration.nix
 
             # Home Manager の統合
-            home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
 
             # ユーザー環境設定モジュールを適用
             (mkHomeManagerModule host)
@@ -69,7 +69,7 @@
         };
     in
     {
-      # sudo nixos-rebuild switch --flake .#tnt で実行
+      # sudo nixos-rebuild switch --flake .#tnt
       nixosConfigurations = builtins.mapAttrs mkNixosSystem hosts;
     };
 }
