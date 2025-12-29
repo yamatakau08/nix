@@ -14,7 +14,7 @@
     mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, mac-app-util }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
       # host configurations
       # Add new hosts here with their username and platform
@@ -77,7 +77,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
-              inherit username homeDirectory isDarwin mac-app-util;
+              inherit inputs username homeDirectory isDarwin;
             };
             home-manager.users.${username} = {
               home.username = username;
@@ -92,7 +92,7 @@
 
       # make Darwin system configuration
       mkDarwinSystem = hostname: host@{ username, platform, ...}:
-        nix-darwin.lib.darwinSystem {
+        inputs.nix-darwin.lib.darwinSystem {
           specialArgs = {
             inherit username;
           };
@@ -101,7 +101,7 @@
             (configuration host)
 
             # Home Manager integration
-            home-manager.darwinModules.home-manager
+            inputs.home-manager.darwinModules.home-manager
 
             # System-level feature configurations
             ./fonts.nix
