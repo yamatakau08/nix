@@ -12,8 +12,7 @@
     mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs =
-    { nixpkgs, home-manager, mac-app-util, ... }:
+  outputs = inputs@{ nixpkgs, ... }:
     let
       username = "yama";
       platforms = [ "aarch64-darwin" "x86_64-linux" ];
@@ -27,7 +26,7 @@
           isDarwin = pkgs.stdenv.isDarwin;
           homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
         in
-          home-manager.lib.homeManagerConfiguration {
+          inputs.home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
             # Specify your home configuration modules here, for example,
@@ -37,11 +36,14 @@
             # Optionally use extraSpecialArgs
             # to pass through these arguments to home.nix
             extraSpecialArgs = {
-              inherit username homeDirectory isDarwin mac-app-util;
+              inherit inputs username homeDirectory isDarwin;
             };
           };
     in
       {
+        # nix run home-manager/master --switch --flake <flake.nix directory>#username@platform [--dry-run]
+        # home-manager switch --flake <flake.nix directory>#username@aarch64-darwin
+        # home-manager switch --flake <flake.nix directory>#username@x86_64-linux
         homeConfigurations = builtins.listToAttrs (
           map (system: {
             name = "${username}@${system}";

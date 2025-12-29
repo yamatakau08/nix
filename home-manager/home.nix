@@ -1,4 +1,4 @@
-{ config, pkgs, lib, username, homeDirectory, isDarwin, mac-app-util, ... }:
+{ pkgs, lib, inputs, username, homeDirectory, isDarwin, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -74,49 +74,58 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  imports = [
-    # common imports for both Darwin and Linux
-    ./fish.nix
-    ./emacs-gtk.nix
-    ./git.nix
-    ./vim.nix
-  ] ++ lib.optionals isDarwin [
-    mac-app-util.homeManagerModules.default
+  imports =
+    let
+      commonModules = [ # for both Darwin and Linux
+        ./fish.nix
+        ./emacs-gtk.nix
+        ./git.nix
+        ./vim.nix
+      ];
 
-    ./wezterm.nix
-    ./mpv.nix
-    ./yt-dlp.nix
-    ./qpdf.nix
-    ./h2.nix
-    ./imagemagick.nix
-    ./exiftool.nix
-    ./android-tools.nix
-    ./scrcpy.nix
-    ./anki-bin.nix
-    ./gemini-cli.nix
-    ./vlc-bin.nix # on Mac, use `-bin` package
-    ./musescore.nix
-    ./wireshark.nix
-    ./gtypist.nix
-    ./ollama.nix
-    ./audacity.nix
-    # ./python314.nix # manage with `nix develop`, not home-manager
-    ./ffmpeg.nix
-    ./nodejs_24.nix
-    ./direnv.nix
-    ./vhs.nix
-    ./pythonPackage.grip.nix # GitHub Readme Instant Preview
-    ./pythonPackage.pip.nix
-    ./hunspell.nix
-    ./wget.nix
-    ./zenn-cli.nix
+      darwinModules = [
+        inputs.mac-app-util.homeManagerModules.default
 
-    # the following unfree package
-    ./appcleaner.nix
-  ] ++ lib.optionals (!isDarwin) [
-    ./chromium.nix
-    ./obsidian.nix
-    ./google-drive-ocamlfuse.nix
-  ];
+        ./wezterm.nix
+        ./mpv.nix
+        ./yt-dlp.nix
+        ./qpdf.nix
+        ./h2.nix
+        ./imagemagick.nix
+        ./exiftool.nix
+        ./android-tools.nix
+        ./scrcpy.nix
+        ./anki-bin.nix
+        ./gemini-cli.nix
+        ./vlc-bin.nix # on Mac, use `-bin` package
+        ./musescore.nix
+        ./wireshark.nix
+        ./gtypist.nix
+        ./ollama.nix
+        ./audacity.nix
+        # ./python314.nix # manage with `nix develop`, not home-manager
+        ./ffmpeg.nix
+        ./nodejs_24.nix
+        ./direnv.nix
+        ./vhs.nix
+        ./pythonPackage.grip.nix # GitHub Readme Instant Preview
+        ./pythonPackage.pip.nix
+        ./hunspell.nix
+        ./wget.nix
+        ./zenn-cli.nix
+
+        # the following unfree package
+        ./appcleaner.nix
+      ];
+
+      linuxModules = [
+        ./chromium.nix
+        ./obsidian.nix
+        ./google-drive-ocamlfuse.nix
+      ];
+    in
+      commonModules
+      ++ lib.optionals isDarwin darwinModules
+      ++ lib.optionals (!isDarwin) linuxModules;
 
 }
