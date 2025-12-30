@@ -3,6 +3,7 @@
   # Fish shell configuration
   programs.fish = {
     enable = true;
+    useBabelfish = true;
 
     # システム全体の設定（全ユーザーに適用される）
     # shellInit = ''
