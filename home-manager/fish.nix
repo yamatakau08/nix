@@ -12,6 +12,9 @@
          direnv hook fish | source
       end
     '';
+    shellAliases = {
+      less = "less --RAW-CONTROL-CHARS";
+    };
   };
 
   # ~/.config/fish/functions ディレクトリ全体を管理
