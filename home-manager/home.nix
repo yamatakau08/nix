@@ -82,6 +82,7 @@
         ./git.nix
         ./vim.nix
         ./wezterm.nix
+        ./ollama.nix
       ];
 
       darwinModules = [
@@ -101,7 +102,6 @@
         ./musescore.nix
         ./wireshark.nix
         ./gtypist.nix
-        ./ollama.nix
         ./audacity.nix
         # ./python314.nix # manage with `nix develop`, not home-manager
         ./ffmpeg.nix
