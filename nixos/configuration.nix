@@ -132,29 +132,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  services.xremap = {
-    enable = true;
-    userName = "${username}";
-    config = {
-      modmap = [
-	{
-	  name = "CapsLock to Ctrl";
-	  remap = {
-	     CapsLock = "Ctrl_L";
-	  };
-	}
-      ];
-      keymap = [
-	{
-	  name = "ZenkakuHankaku to Esc";
-	  remap = {
-	    Grave = "Esc";
-	  };
-	}
-      ];
-    };
-  };
-
   fonts = {
     packages = with pkgs; [
       notonoto-hs

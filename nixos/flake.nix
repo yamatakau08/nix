@@ -61,8 +61,9 @@
             inputs.home-manager.nixosModules.home-manager
 
             # System-level feature configurations
+            ./xremap.nix
             ./fish.nix
-            
+
             # ユーザー環境設定モジュールを適用
             (mkHomeManagerModule host)
 
