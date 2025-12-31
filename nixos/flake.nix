@@ -60,6 +60,9 @@
             # Home Manager の統合
             inputs.home-manager.nixosModules.home-manager
 
+            # System-level feature configurations
+            ./fish.nix
+            
             # ユーザー環境設定モジュールを適用
             (mkHomeManagerModule host)
 
