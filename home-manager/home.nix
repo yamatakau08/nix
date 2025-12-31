@@ -81,12 +81,12 @@
         ./emacs-gtk.nix
         ./git.nix
         ./vim.nix
+        ./wezterm.nix
       ];
 
       darwinModules = [
         inputs.mac-app-util.homeManagerModules.default
 
-        ./wezterm.nix
         ./mpv.nix
         ./yt-dlp.nix
         ./qpdf.nix
