@@ -1,45 +1,25 @@
-{ config, pkgs, inputs, username, ... }:
+{ config, pkgs, lib, ... }:
 
-{
-  imports = [
-    inputs.xremap-flake.nixosModules.default
-  ];
+let
+  xremap-x11-bin = pkgs.stdenv.mkDerivation {
+    pname = "xremap-x11";
+    version = "0.14.8";
 
-  services.xremap = {
-    enable = true;
-    userName = "${username}";
-
-    config = {
-      modmap = [
-        {
-          name = "CapsLock to Ctrl";
-          remap = {
-            CapsLock = "Ctrl_L";
-          };
-        }
-      ];
-      keymap = [
-        {
-          name = "ZenkakuHankaku to Esc";
-          remap = {
-            Grave = "Esc";
-          };
-        }
-        {
-          name = "Emacs Binding";
-          application = {
-            # Nixのリスト形式で記述
-            not = [ "Emacs" "org.wezfurlong.wezterm" ];
-          };
-          remap = {
-            "C-p" = "up";
-            "C-n" = "down";
-            "C-a" = "home";
-            "C-e" = "end";
-            "C-d" = "delete";
-          };
-        }
-      ];
+    src = pkgs.fetchzip {
+      url = "https://github.com/xremap/xremap/releases/download/v0.14.8/xremap-linux-x86_64-x11.zip";
+      sha256 = "sha256-oZpmlsJ+ALhg4o49QicvnxhgBd2jBqqmiq9rU71aYG4=";
     };
+
+    installPhase = ''
+      mkdir -p $out/bin
+      cp xremap $out/bin/
+      chmod +x $out/bin/xremap
+    '';
   };
+in
+{
+  environment.systemPackages = with pkgs; [
+    xremap-x11-bin
+    xorg.xhost # for 'xhost +SI:localuser:root'
+  ];
 }
