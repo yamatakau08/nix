@@ -122,6 +122,7 @@
         ./chromium.nix
         ./obsidian.nix
         ./google-drive-ocamlfuse.nix
+        ./unzip.nix
       ];
     in
       commonModules
