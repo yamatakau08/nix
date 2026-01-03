@@ -1,0 +1,29 @@
+modmap:
+  - name: Global
+    remap:
+      CapsLock: Ctrl_L
+keymap:
+  - name: Global # Optional
+#    exact_match: true
+    remap:
+      Grave: Esc # 半角/全角 to Esc
+#      Ctrl_L-Shift_L-3: SYSRQ # Print Screen Full, Work!
+#      LeftMeta-Shift_L-3: SYSRQ # Print Screen Full, Work!
+      LeftMeta-Shift_L-4: LeftAlt-SYSRQ # Print Screen Active Window, Don't work! Nothing happen.
+#      LeftMeta-Shift_L-4: [LeftAlt,SYSRQ] # Print Screen Active Window, Don't work! Print FULL Screen
+  - name: Emacs Binding
+    application:
+      not: [Emacs, org.wezfurlong.wezterm]
+    remap:
+      # Emacs basic
+      # C-b: left  # for Vim
+      # C-f: right # for Vim
+      C-p: up
+      C-n: down
+
+      # Emacs lines
+      C-a: home
+      C-e: end
+      # C-k: [Shift-end, backspace]
+
+      C-d: delete

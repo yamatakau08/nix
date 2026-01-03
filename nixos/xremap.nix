@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, ... }:
 
 let
   xremap-x11-bin = pkgs.stdenv.mkDerivation {
@@ -16,10 +16,40 @@ let
       chmod +x $out/bin/xremap
     '';
   };
+
+  xremapConfig = ./xremap-config.yml;
 in
 {
   environment.systemPackages = with pkgs; [
     xremap-x11-bin
     xorg.xhost # for 'xhost +SI:localuser:root'
   ];
+
+  systemd.user.services.xhost-root = {
+    description = "Allow root access to X11 for xremap";
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.xorg.xhost}/bin/xhost +SI:localuser:root";
+      RemainAfterExit = true;
+    };
+  };
+
+  systemd.services.xremap = {
+    description = "xremap key remapper";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "display-manager.service" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${xremap-x11-bin}/bin/xremap ${xremapConfig} --watch";
+      Restart = "always";
+      RestartSec = 1;
+    };
+    environment = {
+      DISPLAY = ":0";
+      # XAUTHORITY = "/home/${username}/.Xauthority";
+    };
+  };
+
 }
