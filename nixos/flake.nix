@@ -9,8 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    xremap-flake.url = "github:xremap/nix-flake";
-    # mac-app-util.url = "github:hraban/mac-app-util";
+    # xremap.nix to download binary, don't use this flake.
+    # xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }:
@@ -66,9 +66,6 @@
 
             # ユーザー環境設定モジュールを適用
             (mkHomeManagerModule host)
-
-            # 必要に応じて追加のモジュールをここに記述
-            # inputs.xremap-flake.nixosModules.default
           ];
         };
     in
