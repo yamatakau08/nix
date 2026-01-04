@@ -63,6 +63,7 @@
             # System-level feature configurations
             ./xremap.nix
             ./fish.nix
+            ./hyprland.nix
 
             # ユーザー環境設定モジュールを適用
             (mkHomeManagerModule host)
