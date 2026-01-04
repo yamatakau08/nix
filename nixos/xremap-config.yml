@@ -2,6 +2,9 @@ modmap:
   - name: Global
     remap:
       CapsLock: Ctrl_L
+      Henkan: [Ctrl_L, Space]
+      # Muhenkan: 無変換を押した際に、IME OFFする設定は、fctix 入力メソッドをオフにする の項目のキーを無変換にする事で代用
+
 keymap:
   - name: Global # Optional
 #    exact_match: true
@@ -16,8 +19,8 @@ keymap:
       not: [Emacs, org.wezfurlong.wezterm]
     remap:
       # Emacs basic
-      # C-b: left  # for Vim
-      # C-f: right # for Vim
+      C-b: left
+      C-f: right
       C-p: up
       C-n: down
 
