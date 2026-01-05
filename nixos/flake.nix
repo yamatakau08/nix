@@ -64,6 +64,7 @@
             ./xremap.nix
             ./fish.nix
             ./hyprland.nix
+            ./niri.nix
 
             # ユーザー環境設定モジュールを適用
             (mkHomeManagerModule host)

@@ -12,11 +12,6 @@
     # '';
   };
 
-  # システムパッケージにFishを追加
-  environment.systemPackages = with pkgs; [
-    fish
-  ];
-
   # ユーザー設定
   users.users."${username}" = {
     shell = pkgs.fish;  # ログインシェルをFishに設定（必須）
