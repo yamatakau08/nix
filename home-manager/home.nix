@@ -126,6 +126,7 @@
         ./unzip.nix
         ./emacs-pgtk.nix
         ./waybar.nix
+        ./fuzzel.nix
       ];
     in
       commonModules
