@@ -125,6 +125,7 @@
         ./google-drive-ocamlfuse.nix
         ./unzip.nix
         ./emacs-pgtk.nix
+        ./waybar.nix
       ];
     in
       commonModules
