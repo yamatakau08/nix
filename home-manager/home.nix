@@ -113,6 +113,7 @@
         ./hunspell.nix
         ./wget.nix
         ./zenn-cli.nix
+        ./zoom-us.nix
 
         # the following unfree package
         ./appcleaner.nix
