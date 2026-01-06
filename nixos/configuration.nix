@@ -84,7 +84,7 @@
     isNormalUser = true;
     # description = "Takahiro Yamaguchi";
     extraGroups = [ "networkmanager" "wheel" ]
-                  ++ [ "input" ]; # xremap: for non-root execution, required for /dev/input/* device access
+                  ++ [ "input" "uinput" ]; # xremap: for non-root execution, required for /dev/input/* device access
     packages = with pkgs; [
     #  thunderbird
     ];

@@ -16,7 +16,7 @@ keymap:
 #      LeftMeta-Shift_L-4: [LeftAlt,SYSRQ] # Print Screen Active Window, Don't work! Print FULL Screen
   - name: Emacs Binding
     application:
-      not: [Emacs, org.wezfurlong.wezterm]
+      not: [Emacs, emacs, org.wezfurlong.wezterm] # X11: Emacs, niri: emacs
     remap:
       # Emacs basic
       C-b: left

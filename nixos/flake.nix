@@ -10,7 +10,7 @@
     };
 
     # xremap.nix to download binary, don't use this flake.
-    # xremap-flake.url = "github:xremap/nix-flake";
+    xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }:
@@ -61,7 +61,9 @@
             inputs.home-manager.nixosModules.home-manager
 
             # System-level feature configurations
-            ./xremap.nix
+            #./xremap.nix
+            #./xremap-x11.nix
+            ./xremap-niri.nix
             ./fish.nix
             ./hyprland.nix
             ./niri.nix

@@ -78,7 +78,6 @@
     let
       commonModules = [ # for both Darwin and Linux
         ./fish.nix
-        ./emacs-gtk.nix
         ./git.nix
         ./vim.nix
         ./wezterm.nix
@@ -88,6 +87,7 @@
       darwinModules = [
         inputs.mac-app-util.homeManagerModules.default
 
+        ./emacs-gtk.nix
         ./mpv.nix
         ./yt-dlp.nix
         ./qpdf.nix
@@ -123,6 +123,7 @@
         ./obsidian.nix
         ./google-drive-ocamlfuse.nix
         ./unzip.nix
+        ./emacs-pgtk.nix
       ];
     in
       commonModules
