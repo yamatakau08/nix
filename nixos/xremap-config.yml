@@ -10,23 +10,29 @@ keymap:
 #    exact_match: true
     remap:
       Grave: Esc # 半角/全角 to Esc
+
 #      Ctrl_L-Shift_L-3: SYSRQ # Print Screen Full, Work!
 #      LeftMeta-Shift_L-3: SYSRQ # Print Screen Full, Work!
-      LeftMeta-Shift_L-4: LeftAlt-SYSRQ # Print Screen Active Window, Don't work! Nothing happen.
+#      LeftMeta-Shift_L-4: LeftAlt-SYSRQ # Print Screen Active Window, Don't work! Nothing happen.
 #      LeftMeta-Shift_L-4: [LeftAlt,SYSRQ] # Print Screen Active Window, Don't work! Print FULL Screen
+
   - name: Emacs Binding
+    # refer https://github.com/xremap/xremap/blob/master/example/emacs.yml
     application:
       not: [Emacs, emacs, org.wezfurlong.wezterm] # X11: Emacs, niri: emacs
     remap:
       # Emacs basic
-      C-b: left
-      C-f: right
-      C-p: up
-      C-n: down
+      C-b: { with_mark: left }
+      C-f: { with_mark: right }
+      C-p: { with_mark: up }
+      C-n: { with_mark: down }
 
-      # Emacs lines
-      C-a: home
-      C-e: end
-      # C-k: [Shift-end, backspace]
+      # Beginning/End of line
+      C-a: { with_mark: home }
+      C-e: { with_mark: end }
 
-      C-d: delete
+      # Delete
+      C-d: [delete, { set_mark: false }]
+
+      # Kill line
+      C-k: [Shift-end, C-x, { set_mark: false }]
