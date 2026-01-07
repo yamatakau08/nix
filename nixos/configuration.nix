@@ -136,7 +136,7 @@
     packages = with pkgs; [
       notonoto-hs
       noto-fonts-cjk-sans
-      # noto-fonts-coloer-emoji # comment default installed
+      # noto-fonts-color-emoji # comment default installed
     ];
     fontconfig = {
       defaultFonts = {
