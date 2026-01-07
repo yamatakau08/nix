@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    waybar
-  ];
+  programs.waybar = {
+    enable = true;
+    systemd.enable = false;
+  };
+
 }
