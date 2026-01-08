@@ -128,6 +128,7 @@
         ./waybar.nix
         ./fuzzel.nix
         ./brightnessctl.nix
+        ./wireplumber.nix
       ];
     in
       commonModules
