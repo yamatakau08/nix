@@ -127,6 +127,7 @@
         ./emacs-pgtk.nix
         ./waybar.nix
         ./fuzzel.nix
+        ./brightnessctl.nix
       ];
     in
       commonModules
