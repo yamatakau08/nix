@@ -67,6 +67,7 @@
             ./fish.nix
             ./hyprland.nix
             ./niri.nix
+            ./xdg-desktop-portal-wlr.nix
 
             # ユーザー環境設定モジュールを適用
             (mkHomeManagerModule host)
