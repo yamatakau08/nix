@@ -81,6 +81,7 @@
         ./git.nix
         ./vim.nix
         ./wezterm.nix
+        ./yt-dlp.nix
         ./ollama.nix
       ];
 
@@ -89,7 +90,6 @@
 
         ./emacs-gtk.nix
         ./mpv.nix
-        ./yt-dlp.nix
         ./qpdf.nix
         ./h2.nix
         ./imagemagick.nix
@@ -129,6 +129,11 @@
         ./fuzzel.nix
         ./brightnessctl.nix
         ./wireplumber.nix
+        ./anki.nix
+        ./hyprlock.nix
+        ./hypridle.nix
+        ./libnotify.nix
+        ./mako.nix
       ];
     in
       commonModules
