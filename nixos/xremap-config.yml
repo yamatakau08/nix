@@ -11,6 +11,12 @@ keymap:
     remap:
       Grave: Esc # 半角/全角 to Esc
 
+  - name: Obsidian
+    application:
+      only: [ obsidian ]
+    remap:
+      C-s: C-f
+
   - name: Chromium
     application:
       only: [ chromium-browser ]
