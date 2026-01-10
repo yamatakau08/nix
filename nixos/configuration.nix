@@ -83,8 +83,7 @@
   users.users."${username}" = {
     isNormalUser = true;
     # description = "Takahiro Yamaguchi";
-    extraGroups = [ "networkmanager" "wheel" ]
-                  ++ [ "input" "uinput" ]; # xremap: for non-root execution, required for /dev/input/* device access
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
     ];
