@@ -83,6 +83,7 @@
         ./wezterm.nix
         ./yt-dlp.nix
         ./ollama.nix
+       ./zenn-cli.nix
       ];
 
       darwinModules = [
@@ -112,7 +113,6 @@
         ./pythonPackage.pip.nix
         ./hunspell.nix
         ./wget.nix
-        ./zenn-cli.nix
         ./zoom-us.nix
 
         # the following unfree package
