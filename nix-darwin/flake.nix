@@ -63,6 +63,7 @@
         # conflicts with nix-darwin's native Nix management.
         # To turn off nix-darwin's management of the Nix installation, set:
         nix.enable = false;
+
       };
 
       # Generate Home Manager module configuration
@@ -107,6 +108,9 @@
             ./fonts.nix
             ./fish.nix
             ./finder.nix
+
+            # homebrew
+            ./homebrew.nix
 
             # User environment configuration
             (mkHomeManagerModule host)
