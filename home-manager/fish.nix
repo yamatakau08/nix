@@ -4,14 +4,17 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      if type -q brew
-        eval "$(brew shellenv)"
+      if test "$(uname -m)" = "arm64"
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      else
+        eval "$(/usr/local/bin/brew shellenv)"
       end
 
       if type -q direnv
          direnv hook fish | source
       end
     '';
+
     shellAliases = {
       less = "less --RAW-CONTROL-CHARS";
     };
