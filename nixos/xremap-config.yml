@@ -4,6 +4,8 @@ modmap:
       CapsLock: Ctrl_L
       Henkan: [Ctrl_L, Space]
       # Muhenkan: 無変換を押した際に、IME OFFする設定は、fctix 入力メソッドをオフにする の項目のキーを無変換にする事で代用
+      # Muhenkan:
+      #  launch: ["fcitx5-remote", "-o"]
 
 keymap:
   - name: Global # Optional
@@ -38,6 +40,16 @@ keymap:
       # Beginning/End of line
       C-a: { with_mark: home }
       C-e: { with_mark: end }
+
+      # Page up/down
+      M-v: { with_mark: pageup } # `M` means `Alt`
+      # Esc-v: { with_mark: pageup } # doesn't work
+      # Grave-v: { with_mark: pageup } # doesn't work
+      # C-v: { with_mark: pagedown } # don't assign, because paste is unavailable
+
+      # Beginning/End of file
+      Alt-Shift-comma: { with_mark: C-home }
+      Alt-Shift-dot: { with_mark: C-end }
 
       # Delete
       C-d: [delete, { set_mark: false }]
