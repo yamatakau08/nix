@@ -2,10 +2,11 @@ modmap:
   - name: Global
     remap:
       CapsLock: Ctrl_L
-      Henkan: [Ctrl_L, Space]
+
+      # Henkan: [Ctrl_L, Space]
       # Muhenkan: 無変換を押した際に、IME OFFする設定は、fctix 入力メソッドをオフにする の項目のキーを無変換にする事で代用
       # Muhenkan:
-      #  launch: ["fcitx5-remote", "-o"]
+      #  launch: ["fcitx5-remote", "-c"]
 
 keymap:
   - name: Global # Optional
