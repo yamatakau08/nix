@@ -42,6 +42,9 @@ keymap:
       C-a: { with_mark: home }
       C-e: { with_mark: end }
 
+      # Newline
+      #C-o: [enter, left] # don't use this, because obsidian's C-o open quick switch is useful
+
       # Page up/down
       M-v: { with_mark: pageup } # `M` means `Alt`
       # Esc-v: { with_mark: pageup } # doesn't work
