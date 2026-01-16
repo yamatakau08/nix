@@ -45,11 +45,13 @@ keymap:
       # Newline
       #C-o: [enter, left] # don't use this, because obsidian's C-o open quick switch is useful
 
+      # Copy
+      C-y: [C-v, { set_mark: false }]
+
       # Page up/down
-      M-v: { with_mark: pageup } # `M` means `Alt`
-      # Esc-v: { with_mark: pageup } # doesn't work
-      # Grave-v: { with_mark: pageup } # doesn't work
-      # C-v: { with_mark: pagedown } # don't assign, because paste is unavailable
+      # M in Emacs Page up/down M-v, M->, M-< becomes the keystroke v,>,<
+      # after pressing and releasing Esc.  "Release" can't be configured with xremap, so don't define it.
+      # C-v: { with_mark: pagedown } # Not assign,paste becomes invalid
 
       # Beginning/End of file
       Alt-Shift-comma: { with_mark: C-home }
