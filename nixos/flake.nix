@@ -59,6 +59,8 @@
               ./configuration.nix
             ]
             ++ [
+              ./fonts.nix
+
               # Home Manager の統合
               inputs.home-manager.nixosModules.home-manager
 
