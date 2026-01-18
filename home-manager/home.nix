@@ -134,6 +134,7 @@
         ./hypridle.nix
         ./libnotify.nix
         ./mako.nix
+        ./xdg-mime-apps.nix
       ];
     in
       commonModules
