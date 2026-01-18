@@ -53,26 +53,28 @@
           specialArgs = {
             inherit inputs username hostname;
           };
-          modules = [
-            # メインのシステム設定
-            ./configuration.nix
+          modules =
+            nixpkgs.lib.optionals (hostname == "tnt") [
+              ./hardware-configuration.nix
+              ./configuration.nix
+            ]
+            ++ [
+              # Home Manager の統合
+              inputs.home-manager.nixosModules.home-manager
 
-            # Home Manager の統合
-            inputs.home-manager.nixosModules.home-manager
+              # System-level feature configurations
+              #./xremap.nix
+              #./xremap-x11.nix
+              ./xremap-niri.nix
+              ./fish.nix
+              ./hyprland.nix
+              ./niri.nix
+              ./xdg-desktop-portal-wlr.nix
+              ./blueman.nix
 
-            # System-level feature configurations
-            #./xremap.nix
-            #./xremap-x11.nix
-            ./xremap-niri.nix
-            ./fish.nix
-            ./hyprland.nix
-            ./niri.nix
-            ./xdg-desktop-portal-wlr.nix
-            ./blueman.nix
-
-            # ユーザー環境設定モジュールを適用
-            (mkHomeManagerModule host)
-          ];
+              # ユーザー環境設定モジュールを適用
+              (mkHomeManagerModule host)
+            ];
         };
     in
     {
