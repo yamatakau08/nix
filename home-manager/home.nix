@@ -135,6 +135,7 @@
         ./libnotify.nix
         ./mako.nix
         ./xdg-mime-apps.nix
+        ./jq.nix
       ];
     in
       commonModules
