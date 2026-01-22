@@ -81,9 +81,10 @@
         ./git.nix
         ./vim.nix
         ./wezterm.nix
+        ./unzip.nix
         ./yt-dlp.nix
         ./ollama.nix
-       ./zenn-cli.nix
+        ./zenn-cli.nix
       ];
 
       darwinModules = [
@@ -123,7 +124,6 @@
         ./chromium.nix
         ./obsidian.nix
         ./google-drive-ocamlfuse.nix
-        ./unzip.nix
         ./emacs-pgtk.nix
         ./waybar.nix
         ./fuzzel.nix
