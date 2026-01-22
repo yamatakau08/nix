@@ -10,6 +10,7 @@
     withNiri = true;
     userName = username;
     serviceMode = "user";
+    watch = true;
 
     yamlConfig = builtins.readFile ./xremap-config.yml;
   };
