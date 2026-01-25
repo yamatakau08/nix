@@ -125,7 +125,7 @@
         ./obsidian.nix
         ./google-drive-ocamlfuse.nix
         ./emacs-pgtk.nix
-        ./waybar.nix
+        ./waybar/waybar.nix
         ./fuzzel.nix
         ./brightnessctl.nix
         ./wireplumber.nix
