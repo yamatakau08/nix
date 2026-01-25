@@ -6,4 +6,5 @@
     systemd.enable = false;
   };
 
+  xdg.configFile."waybar/power_menu.xml".source = ./power_menu.xml;
 }
