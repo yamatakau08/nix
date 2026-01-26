@@ -49,7 +49,7 @@
 
   # Enable the Budgie Desktop environment.
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.budgie.enable = true;
+  services.desktopManager.budgie.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
