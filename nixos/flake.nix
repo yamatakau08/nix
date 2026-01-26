@@ -69,7 +69,7 @@
               #./xremap-x11.nix
               ./xremap-niri.nix
               ./fish.nix
-              ./hyprland.nix
+              #./hyprland.nix
               ./niri.nix
               ./xdg-desktop-portal-wlr.nix
               ./blueman.nix
