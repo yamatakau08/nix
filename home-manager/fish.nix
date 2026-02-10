@@ -15,6 +15,8 @@
       if type -q direnv
          direnv hook fish | source
       end
+
+      set --export LESSEDIT "vi %f"
     '';
 
     shellAliases = {
