@@ -85,6 +85,7 @@
         ./yt-dlp.nix
         ./ollama.nix
         ./zenn-cli.nix
+        ./gnupg.nix
       ];
 
       darwinModules = [
