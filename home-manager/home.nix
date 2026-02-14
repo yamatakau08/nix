@@ -137,6 +137,7 @@
         ./mako.nix
         ./xdg-mime-apps.nix
         ./jq.nix
+        ./pinentry-tty.nix # for gnupg
       ];
     in
       commonModules
