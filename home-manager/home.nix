@@ -137,6 +137,7 @@
         ./mako.nix
         ./xdg-mime-apps.nix
         ./jq.nix
+        ./imagemagick.nix # for image dired on Emacs pgtk.
       ];
     in
       commonModules

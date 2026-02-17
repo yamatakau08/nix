@@ -2,8 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # emacs-gtk
-    # (pkgs.emacs-gtk.override { withNativeCompilation = true; })
     cmigemo
   ];
 
@@ -11,8 +9,9 @@
     enable = true;
     package = pkgs.emacs-pgtk;
 
-    # ネイティブコンパイルを有効にしたい場合:
-    # package = pkgs.emacs-gtk.override { withNativeCompilation = true; };
+    ## enable Emacs builtin ImageMagick function
+    ## the following configuration has assert!
+    # package = pkgs.emacs-pgtk.override { withImageMagick = true; };
 
     # extraConfig = ''
     #   (setq inhibit-startup-message t)
