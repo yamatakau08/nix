@@ -114,6 +114,7 @@
         ./hunspell.nix
         ./wget.nix
         ./zoom-us.nix
+        ./mas.nix # Mac App Store command line interface
 
         # the following unfree package
         ./appcleaner.nix
