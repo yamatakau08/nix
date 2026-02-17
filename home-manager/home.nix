@@ -106,9 +106,7 @@
         ./wireshark.nix
         ./gtypist.nix
         ./audacity.nix
-        # ./python314.nix # manage with `nix develop`, not home-manager
         ./ffmpeg.nix
-        ./nodejs_24.nix
         ./direnv.nix
         ./vhs.nix
         ./pythonPackage.grip.nix # GitHub Readme Instant Preview
@@ -119,6 +117,9 @@
 
         # the following unfree package
         ./appcleaner.nix
+
+        # ./python314.nix # manage with `nix develop`, not home-manager
+        # ./nodejs_24.nix # for sample java script uses node.js
       ];
 
       linuxModules = [
