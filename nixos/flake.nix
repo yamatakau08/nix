@@ -57,6 +57,7 @@
             nixpkgs.lib.optionals (hostname == "tnt") [
               ./hardware-configuration.nix
               ./configuration.nix
+              ./openssh.nix
             ]
             ++ [
               ./fonts.nix
