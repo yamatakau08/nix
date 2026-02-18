@@ -58,6 +58,7 @@
               ./hardware-configuration.nix
               ./configuration.nix
               ./openssh.nix
+              ./avahi.nix
             ]
             ++ [
               ./fonts.nix
