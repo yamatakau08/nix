@@ -86,6 +86,7 @@
         ./ollama.nix
         ./zenn-cli.nix
         ./gnupg.nix
+        ./gemini-cli.nix
       ];
 
       darwinModules = [
@@ -100,7 +101,6 @@
         ./android-tools.nix
         ./scrcpy.nix
         ./anki-bin.nix
-        ./gemini-cli.nix
         ./vlc-bin.nix # on Mac, use `-bin` package
         ./musescore.nix
         ./wireshark.nix
