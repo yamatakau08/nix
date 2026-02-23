@@ -140,6 +140,7 @@
         ./xdg-mime-apps.nix
         ./jq.nix
         ./imagemagick.nix # for image dired on Emacs pgtk.
+        ./pinta.nix
       ];
     in
       commonModules
