@@ -75,7 +75,7 @@
               ./niri.nix
               ./xdg-desktop-portal-wlr.nix
               ./blueman.nix
-
+              
               # ユーザー環境設定モジュールを適用
               (mkHomeManagerModule host)
             ];

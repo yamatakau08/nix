@@ -141,6 +141,8 @@
         ./jq.nix
         ./imagemagick.nix # for image dired on Emacs pgtk.
         ./pinta.nix
+        ./wf-recorder.nix
+        ./xwayland-sattellite.nix
       ];
     in
       commonModules
