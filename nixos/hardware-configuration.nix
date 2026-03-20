@@ -48,4 +48,16 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Disable USB auto-suspend to ensure wakeup signals are sent from USB devices
+  boot.kernelParams = lib.mkAfter [ "usbcore.autosuspend=-1" ];
+
+  services.udev.extraRules = lib.mkAfter ''
+    # USB HID devices (mouse, keyboard, etc.): bDeviceClass==00: device class is defined at the interface level
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{bDeviceClass}=="00", ATTR{power/wakeup}="enabled"
+
+    # Bluetooth / Wireless Controller: bDeviceClass==e0
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{bDeviceClass}=="e0", ATTR{power/wakeup}="enabled"
+  '';
+
 }
