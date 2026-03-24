@@ -143,6 +143,7 @@
         ./pinta.nix
         ./wf-recorder.nix
         ./xwayland-sattellite.nix
+        ./discord.nix
       ];
     in
       commonModules
