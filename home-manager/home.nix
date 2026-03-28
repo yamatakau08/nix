@@ -115,6 +115,7 @@
         ./wget.nix
         ./zoom-us.nix
         ./mas.nix # Mac App Store command line interface
+        ./docker.nix
 
         # the following unfree package
         ./appcleaner.nix
