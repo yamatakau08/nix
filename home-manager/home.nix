@@ -87,6 +87,7 @@
         ./zenn-cli.nix
         ./gnupg.nix
         ./gemini-cli.nix
+        ./tree.nix
       ];
 
       darwinModules = [
