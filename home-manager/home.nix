@@ -88,6 +88,8 @@
         ./gnupg.nix
         ./gemini-cli.nix
         ./tree.nix
+        ./ocrmypdf.nix
+        ./poppler-utils.nix
       ];
 
       darwinModules = [
