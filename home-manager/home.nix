@@ -88,7 +88,6 @@
         ./gnupg.nix
         ./gemini-cli.nix
         ./tree.nix
-        ./ocrmypdf.nix
         ./poppler-utils.nix
       ];
 
@@ -119,6 +118,8 @@
         ./zoom-us.nix
         ./mas.nix # Mac App Store command line interface
         ./docker.nix
+        # ./ocrmypdf.nix #  nix-darwin rebuild failed
+
 
         # the following unfree package
         ./appcleaner.nix
@@ -148,6 +149,7 @@
         ./wf-recorder.nix
         ./xwayland-sattellite.nix
         ./discord.nix
+        ./ocrmypdf.nix
       ];
     in
       commonModules
