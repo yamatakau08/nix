@@ -119,6 +119,7 @@
         ./mas.nix # Mac App Store command line interface
         ./docker.nix
         # ./ocrmypdf.nix #  nix-darwin rebuild failed
+        ./duckckdb.nix
 
 
         # the following unfree package
