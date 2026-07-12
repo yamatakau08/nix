@@ -16,7 +16,7 @@
       pnpmDeps = pkgs.pnpm_10.fetchDeps {
         inherit pname version src;
         hash = "sha256-hCseIc9TPRdGTDvL7M5ewrvgb/jj+QPNvd1lR/DwCgc=";
-        fetcherVersion = 2; # pnpm の依存関係取得方法のバージョン 2:新しい方式
+        fetcherVersion = 3;
       };
     }))
   ];
