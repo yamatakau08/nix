@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # unstable で壊れたパッケージの退避先。
+    # darwin チャンネルなので macOS 向けにビルド済み = キャッシュが効く。
+    # 使い方は overlays/stable-fallback.nix を参照。
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -95,7 +99,7 @@
       mkDarwinSystem = hostname: host@{ username, platform, ...}:
         inputs.nix-darwin.lib.darwinSystem {
           specialArgs = {
-            inherit username;
+            inherit inputs username;
           };
           modules = [
             # Base system configuration
@@ -103,6 +107,9 @@
 
             # Home Manager integration
             inputs.home-manager.darwinModules.home-manager
+
+            # nixpkgs overlays
+            ./overlays.nix
 
             # System-level feature configurations
             ./fonts.nix
