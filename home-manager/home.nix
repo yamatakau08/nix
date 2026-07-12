@@ -86,7 +86,7 @@
         ./ollama.nix
         ./zenn-cli.nix
         ./gnupg.nix
-        ./gemini-cli.nix
+        ./antigravity.nix
         ./tree.nix
         ./poppler-utils.nix
       ];
@@ -117,10 +117,10 @@
         ./wget.nix
         ./zoom-us.nix
         ./mas.nix # Mac App Store command line interface
-        ./docker.nix
-        # ./ocrmypdf.nix #  nix-darwin rebuild failed
+        ./docker.nix # colima rebuild failed, use stable in ../overlays/stable-fallback.nix
+        ./ocrmypdf.nix
         ./duckckdb.nix
-
+        ./claude-code.nix
 
         # the following unfree package
         ./appcleaner.nix
