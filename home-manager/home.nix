@@ -89,6 +89,7 @@
         ./antigravity.nix
         ./tree.nix
         ./poppler-utils.nix
+        ./md-to-pdf.nix
       ];
 
       darwinModules = [
