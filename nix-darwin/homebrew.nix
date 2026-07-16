@@ -4,6 +4,11 @@
   homebrew = {
     enable = true;
 
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+    };
+
     taps = [
       # "houmain/tap" # for keymapper
     ];
@@ -14,7 +19,9 @@
 
     casks = [
       "karabiner-elements"
-      "claude" # Desktop
+      ## Claude Desktop is registered with auto_update: true
+      ## Since upgrade is skipped, add greedy = true;
+      { name = "claude"; greedy = true;} # Desktop
     ];
 
     masApps = {
