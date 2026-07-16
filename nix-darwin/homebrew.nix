@@ -14,6 +14,7 @@
 
     casks = [
       "karabiner-elements"
+      "claude" # Desktop
     ];
 
     masApps = {
