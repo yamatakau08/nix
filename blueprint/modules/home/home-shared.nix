@@ -16,5 +16,6 @@
   imports = [
     ./fish.nix
     ./gnupg.nix
+    ./wezterm.nix
   ];
 }
