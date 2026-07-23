@@ -17,5 +17,6 @@
     ./fish.nix
     ./gnupg.nix
     ./wezterm.nix
+    ./obsidian.nix
   ];
 }
