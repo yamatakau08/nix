@@ -18,5 +18,6 @@
     ./gnupg.nix
     ./wezterm.nix
     ./obsidian.nix
+    ./android-file-transfer.nix
   ];
 }
