@@ -11,7 +11,7 @@
     ./android-tools.nix
     ./anki-bin.nix
     ./vlc-bin.nix
-    # ./audacity.nix
+    ./audacity.nix
     ./direnv.nix
     # ./claude-code.nix
   ];
