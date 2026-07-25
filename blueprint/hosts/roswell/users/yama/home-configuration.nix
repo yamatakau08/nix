@@ -9,6 +9,8 @@
     ./appcleaner.nix
 
     ./emacs-gtk.nix
+    ./imagemagick.nix # for emacs image-dired
+
     ./android-tools.nix
     ./anki-bin.nix
     ./vlc-bin.nix
