@@ -19,5 +19,6 @@
     ./wezterm.nix
     ./obsidian.nix
     ./android-file-transfer.nix
+    ./google-chrome.nix
   ];
 }
