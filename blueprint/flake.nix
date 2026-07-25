@@ -17,6 +17,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     mac-app-util.url = "github:hraban/mac-app-util";
+
+    # for comma
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Load the blueprint

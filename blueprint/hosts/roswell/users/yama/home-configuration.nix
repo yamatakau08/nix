@@ -4,6 +4,7 @@
   imports = [
     inputs.self.homeModules.home-shared
     inputs.mac-app-util.homeManagerModules.default
+    inputs.nix-index-database.homeModules.default # for comma
 
     ./appcleaner.nix
 
@@ -15,4 +16,6 @@
     ./direnv.nix
     # ./claude-code.nix
   ];
+
+  programs.nix-index-database.comma.enable = true; # for comma
 }
