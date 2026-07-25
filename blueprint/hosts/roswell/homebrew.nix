@@ -18,6 +18,7 @@
     ];
 
     casks = [
+      "google-drive"
       "hammerspoon"
       # "karabiner-elements" # use Nixpkgs packages
       ## Claude Desktop is registered with auto_update: true
