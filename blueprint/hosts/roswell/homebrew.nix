@@ -19,7 +19,7 @@
 
     casks = [
       "hammerspoon"
-      # "karabiner-elements"
+      # "karabiner-elements" # use Nixpkgs packages
       ## Claude Desktop is registered with auto_update: true
       ## Since upgrade is skipped, add greedy = true;
       { name = "claude"; greedy = true;} # Desktop

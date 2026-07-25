@@ -18,6 +18,8 @@
     ./direnv.nix
     # ./claude-code.nix
     ./freetube.nix
+
+    ./karabiner-elements.nix
   ];
 
   programs.nix-index-database.comma.enable = true; # for comma
