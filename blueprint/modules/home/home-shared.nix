@@ -20,5 +20,6 @@
     ./obsidian.nix
     ./android-file-transfer.nix
     ./google-chrome.nix
+    ./git.nix
   ];
 }
