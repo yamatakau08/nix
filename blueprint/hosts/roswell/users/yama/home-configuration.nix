@@ -15,6 +15,7 @@
     ./audacity.nix
     ./direnv.nix
     # ./claude-code.nix
+    ./freetube.nix
   ];
 
   programs.nix-index-database.comma.enable = true; # for comma
