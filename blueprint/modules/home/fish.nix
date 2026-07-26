@@ -7,8 +7,10 @@
       if test "$(uname -s)" = "Darwin"
         if test "$(uname -m)" = "arm64"
           eval "$(/opt/homebrew/bin/brew shellenv)"
+          fish_add_path --path --append --move /opt/homebrew/bin /opt/homebrew/sbin
         else
           eval "$(/usr/local/bin/brew shellenv)" # x86_64 intel Mac
+          fish_add_path --path --append --move /usr/local/bin /usr/local/sbin
         end
       end
 
