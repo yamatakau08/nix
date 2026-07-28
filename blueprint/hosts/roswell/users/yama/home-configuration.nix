@@ -22,6 +22,7 @@
     ./karabiner-elements.nix
 
     ./duckdb.nix
+    ./dbeaver-bin.nix
   ];
 
   programs.nix-index-database.comma.enable = true; # for comma
