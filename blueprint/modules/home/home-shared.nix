@@ -21,5 +21,7 @@
     ./android-file-transfer.nix
     ./google-chrome.nix
     ./git.nix
+
+    ./md-to-pdf.nix
   ];
 }

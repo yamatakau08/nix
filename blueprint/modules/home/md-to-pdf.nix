@@ -1,14 +1,15 @@
 { config, pkgs, lib, ... }:
 
 let
-  # md-to-pdf は puppeteer 経由で Chrome/Chromium を使う。
-  # Chromium は Darwin でビルドできないため、Mac では Homebrew 等で入れた
-  # Google Chrome.app を、Linux では pkgs.chromium を使う。
+  # md-to-pdf は puppeteer 経由で Chrome を使う。home-shared.nix で入れている
+  # pkgs.google-chrome の store パスを直接指す (~/Applications のトランポリンに
+  # 依存せず、md-to-pdf 自身が google-chrome を依存として引き込むため確実)。
+  # 実体バイナリの位置が darwin と linux で異なるので分岐する。
   chromePath =
     if pkgs.stdenv.isDarwin then
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      "${pkgs.google-chrome}/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     else
-      "${pkgs.chromium}/bin/chromium";
+      "${pkgs.google-chrome}/bin/google-chrome-stable";
 
   md-to-pdf-unwrapped = pkgs.buildNpmPackage rec {
     pname = "md-to-pdf";
@@ -140,6 +141,9 @@ let
 
     module.exports = {
       marked_extensions: [markedAlert()],
+
+      // puppeteer 21 では headless: true が非推奨警告を出す。新 headless を明示して黙らせる。
+      launch_options: { headless: "new" },
 
       // md-to-pdf の config はシャローマージ (cli.ts の {...config, ...configFile}) なので、
       // stylesheet を指定すると既定の markdown.css が置き換わってしまう。両方を明示する。
