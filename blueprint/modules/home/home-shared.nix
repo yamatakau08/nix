@@ -23,5 +23,6 @@
     ./git.nix
 
     ./md-to-pdf.nix
+    ./tree.nix
   ];
 }
