@@ -20,6 +20,8 @@
     ./freetube.nix
 
     ./karabiner-elements.nix
+
+    ./duckdb.nix
   ];
 
   programs.nix-index-database.comma.enable = true; # for comma
