@@ -3,6 +3,7 @@
 
   imports = [
     inputs.self.nixosModules.host-shared
+    ./finder.nix
     ./fonts.nix
     ./homebrew.nix
     ./overlays.nix
