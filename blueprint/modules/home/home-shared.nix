@@ -24,5 +24,6 @@
 
     ./md-to-pdf.nix
     ./tree.nix
+    ./claude-code.nix
   ];
 }

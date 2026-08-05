@@ -1,0 +1,9 @@
+{ pkgs, inputs, ... }:
+{
+
+  imports = [
+    inputs.self.homeModules.home-shared
+    ./emacs-pgtk.nix
+    ./imagemagick.nix
+  ];
+}
