@@ -6,5 +6,6 @@
     ./emacs-pgtk.nix
     ./imagemagick.nix
     ./google-drive-ocamlfuse-service.nix
+    ./fuzzel.nix
   ];
 }
