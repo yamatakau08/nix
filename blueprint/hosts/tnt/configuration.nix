@@ -6,6 +6,8 @@
     ./hardware-configuration.nix
     ./niri.nix
     ./ddcutil.nix
+    # ./overlays.nix # for notonoto, notonoto-hs
+    ./fonts.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
