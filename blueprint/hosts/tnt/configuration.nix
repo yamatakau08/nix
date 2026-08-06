@@ -5,6 +5,7 @@
     inputs.self.nixosModules.host-shared
     ./hardware-configuration.nix
     ./niri.nix
+    ./ddcutil.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
