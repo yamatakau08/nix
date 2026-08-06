@@ -9,5 +9,6 @@
 
     ./fuzzel.nix
     ./waybar/waybar.nix
+    ./brightnessctl.nix
   ];
 }
