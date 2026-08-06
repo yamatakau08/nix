@@ -4,6 +4,7 @@
   imports = [
     inputs.self.nixosModules.host-shared
     ./hardware-configuration.nix
+    ./niri.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
