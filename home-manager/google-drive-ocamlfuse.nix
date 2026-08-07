@@ -15,7 +15,7 @@
     };
 
     Service = {
-      Type = "forking";
+      Type = "simple";
       # Create the mount point directory if it doesn't exist
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/gdrive";
       # Start the mount process. %h is a systemd specifier that expands to the user's home directory
