@@ -1,6 +1,7 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /* アイコンは font-awesome + nerd-fonts.symbols-only で描画（fonts.nix 参照）。
+       "Font Awesome 7 Free Solid" は Solid face を直接指す別名（無印だと Regular が選ばれ一部欠ける）。 */
+    font-family: "HackGen35 Console", "Font Awesome 7 Free Solid", "Symbols Nerd Font", monospace;
     font-size: 13px;
 }
 

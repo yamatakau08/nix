@@ -7,6 +7,10 @@
     # notonoto
     # notonoto-hs
 
-    hackgen-font
+    hackgen-font                # テキスト用
+
+    # the followins are for waybar icon
+    nerd-fonts.symbols-only     # アイコン用: weather 領域(U+E3xx)等をカバー
+    font-awesome                # アイコン用: 新しめ FA の6個(U+F590 等, Solid face)をカバー
   ];
 }
