@@ -10,5 +10,7 @@
     ./fuzzel.nix
     ./waybar/waybar.nix
     ./brightnessctl.nix
+    ./hypridle.nix
+    ./hyprlock.nix
   ];
 }
