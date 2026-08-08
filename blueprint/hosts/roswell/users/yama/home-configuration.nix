@@ -17,7 +17,7 @@
     ./audacity.nix
     ./direnv.nix
     # ./claude-code.nix
-    ./freetube.nix
+    # ./freetube.nix # due to build error (macOS codesign, upstream unresolved)
 
     ./karabiner-elements.nix
 
