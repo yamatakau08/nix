@@ -12,6 +12,7 @@
 
     taps = [
       # "houmain/tap" # for keymapper
+      { name = "BarutSRB/tap"; trusted = true; } # for omniWM
     ];
 
     brews = [
@@ -21,6 +22,7 @@
     casks = [
       "google-drive"
       "hammerspoon"
+      "omniwm"
       # "karabiner-elements" # use Nixpkgs packages
       ## Claude Desktop is registered with auto_update: true
       ## Since upgrade is skipped, add greedy = true;
