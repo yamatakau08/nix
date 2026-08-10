@@ -4,6 +4,8 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  # ASUS E203MA
+
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
