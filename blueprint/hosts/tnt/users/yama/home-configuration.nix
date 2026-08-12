@@ -7,6 +7,7 @@
     ./imagemagick.nix
     ./google-drive-ocamlfuse-service.nix
     ./android-studio.nix
+    ./android-tools.nix
 
     ./fuzzel.nix
     ./waybar/waybar.nix
