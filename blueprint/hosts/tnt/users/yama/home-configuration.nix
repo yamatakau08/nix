@@ -6,6 +6,7 @@
     ./emacs-pgtk.nix
     ./imagemagick.nix
     ./google-drive-ocamlfuse-service.nix
+    ./android-studio.nix
 
     ./fuzzel.nix
     ./waybar/waybar.nix
