@@ -1,4 +1,4 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, lib, osConfig, ... }:
 {
 
   # only available on linux, disabled on macos
@@ -25,5 +25,9 @@
     ./md-to-pdf.nix
     ./tree.nix
     ./claude-code.nix
+  ]
+  ++ lib.optionals osConfig.nixpkgs.hostPlatform.isLinux [
+    ./anki.nix
   ];
+
 }
