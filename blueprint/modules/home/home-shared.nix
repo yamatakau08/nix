@@ -29,6 +29,8 @@
   ++ lib.optionals osConfig.nixpkgs.hostPlatform.isLinux [
     ./anki.nix
     ./scrcpy.nix
+  ]
+  ++ lib.optionals osConfig.nixpkgs.hostPlatform.isDarwin [
   ];
 
 }
