@@ -14,5 +14,7 @@
     ./brightnessctl.nix
     ./hypridle.nix
     ./hyprlock.nix
+
+    ./sqlite.nix # for Emacs my eced package
   ];
 }
