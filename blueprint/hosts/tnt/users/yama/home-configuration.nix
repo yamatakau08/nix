@@ -16,5 +16,6 @@
     ./hyprlock.nix
 
     ./sqlite.nix # for Emacs my eced package
+    ./dbeaver-bin.nix
   ];
 }
