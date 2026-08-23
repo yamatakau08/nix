@@ -18,7 +18,6 @@
     ./gnupg.nix
     ./wezterm.nix
     ./obsidian.nix
-    ./android-file-transfer.nix
     ./google-chrome.nix
     ./git.nix
 
@@ -29,6 +28,7 @@
   ++ lib.optionals osConfig.nixpkgs.hostPlatform.isLinux [
     ./anki.nix
     ./scrcpy.nix
+    ./android-file-transfer.nix
   ]
   ++ lib.optionals osConfig.nixpkgs.hostPlatform.isDarwin [
   ];
