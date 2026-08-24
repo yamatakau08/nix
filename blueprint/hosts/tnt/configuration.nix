@@ -15,6 +15,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  ## garbage collection automation
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 7d";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
