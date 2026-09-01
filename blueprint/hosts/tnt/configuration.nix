@@ -54,6 +54,9 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
+  # console keymap
+  console.keyMap = "jp106";
+
   # added for IME
   i18n.inputMethod = {
     enable = true;
