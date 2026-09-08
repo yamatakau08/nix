@@ -104,7 +104,7 @@
   services.openssh = {
     enable = true;
     settings = {
-      PermitRootLogin = "yes";
+      # PermitRootLogin = "yes";
     };
   };
 
