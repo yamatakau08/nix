@@ -24,6 +24,7 @@
     ./md-to-pdf.nix
     ./tree.nix
     ./claude-code.nix
+    ./yt-dlp.nix
   ]
   ++ lib.optionals osConfig.nixpkgs.hostPlatform.isLinux [
     ./anki.nix
