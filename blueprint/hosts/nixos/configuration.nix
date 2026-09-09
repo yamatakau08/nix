@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./brcm-firmware.nix
+      ./niri.nix
     ];
 
   nix.settings.experimental-features = [
