@@ -24,10 +24,15 @@
 
     # t2linux
     nixpkgs-25_11.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixos-hardware = {
+     url = "github:NixOS/nixos-hardware";
+     inputs.nixpkgs.follows = "nixpkgs-25_11";
+    };
     home-manager-25_11 = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-25_11";
     };
+
   };
 
   # Load the blueprint

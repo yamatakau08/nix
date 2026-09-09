@@ -7,6 +7,7 @@
     specialArgs = { inherit inputs flake; };
     modules = [
       ./configuration.nix
+      inputs.nixos-hardware.nixosModules.apple-t2
       inputs.home-manager-25_11.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
