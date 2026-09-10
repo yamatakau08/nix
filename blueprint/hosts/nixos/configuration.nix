@@ -7,9 +7,12 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      inputs.self.nixosModules.host-shared
       ./hardware-configuration.nix
       ./brcm-firmware.nix
+      ./fonts.nix
       ./niri.nix
+      ./ddcutil.nix
     ];
 
   nix.settings.experimental-features = [
@@ -18,6 +21,12 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  ## garbage collection automation
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 7d";
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -46,6 +55,13 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
+
+  # added for IME
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = [ pkgs.fcitx5-mozc ];
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
