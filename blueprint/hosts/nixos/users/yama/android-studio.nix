@@ -1,8 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  pkgs-unstable = import inputs.nixpkgs {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
+in
 {
   home.packages = with pkgs; [
-    android-studio
+    pkgs-unstable.android-studio
   ];
 
   home.sessionVariables = {
