@@ -5,6 +5,7 @@
     inputs.self.homeModules.home-shared
     ./emacs-pgtk.nix
     ./imagemagick.nix
+    ./google-drive-ocamlfuse.nix
     ./google-drive-ocamlfuse-service.nix
     ./android-studio.nix
     ./android-tools.nix

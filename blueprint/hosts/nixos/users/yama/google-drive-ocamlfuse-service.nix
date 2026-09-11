@@ -1,8 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  pkgs-unstable = import inputs.nixpkgs {
+    system = pkgs.system;
+  };
+in
 {
   home.packages = with pkgs; [
-    google-drive-ocamlfuse
+    pkgs-unstable.google-drive-ocamlfuse
   ];
 
   # Configuration for the systemd user service
@@ -19,7 +24,7 @@
       # Create the mount point directory if it doesn't exist
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/gdrive";
       # Start the mount process. %h is a systemd specifier that expands to the user's home directory
-      ExecStart = "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse %h/gdrive";
+      ExecStart = "${pkgs-unstable.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse %h/gdrive";
       # Unmount the drive when the service stops
       ExecStop = "/run/current-system/sw/bin/fusermount -u %h/gdrive";
       Restart = "on-failure";
