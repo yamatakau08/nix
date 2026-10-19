@@ -2,6 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    (hunspellWithDicts [ hunspellDicts.en-us ])
+    (hunspell.withDicts (dicts: with dicts; [ en_US ]))
   ];
 }
