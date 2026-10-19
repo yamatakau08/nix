@@ -25,6 +25,8 @@
     ./tree.nix
     ./claude-code.nix
     ./yt-dlp.nix
+
+    ./hunspell.nix # for Emacs ispell
   ]
   ++ lib.optionals osConfig.nixpkgs.hostPlatform.isLinux [
     ./anki.nix
