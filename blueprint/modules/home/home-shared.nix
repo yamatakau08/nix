@@ -21,7 +21,7 @@
     ./google-chrome.nix
     ./git.nix
 
-    ./md-to-pdf.nix
+    # ./md-to-pdf.nix # Since build failed, comment.
     ./tree.nix
     ./claude-code.nix
     ./yt-dlp.nix
