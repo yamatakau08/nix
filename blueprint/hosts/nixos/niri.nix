@@ -17,4 +17,7 @@
     };
   };
 
+  # for musescore should be worked on X11 (xcb)
+  environment.systemPackages = [ pkgs.xwayland-satellite ];
+
 }
