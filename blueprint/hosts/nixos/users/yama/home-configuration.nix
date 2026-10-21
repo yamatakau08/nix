@@ -20,5 +20,6 @@
     ./dbeaver-bin.nix
 
     ./musescore.nix
+    ./ffmpeg.nix
   ];
 }
