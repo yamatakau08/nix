@@ -23,6 +23,8 @@
 
     ./duckdb.nix
     ./dbeaver-bin.nix
+
+    ./ffmpeg.nix
   ];
 
   programs.nix-index-database.comma.enable = true; # for comma
