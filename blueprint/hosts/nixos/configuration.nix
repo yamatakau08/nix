@@ -13,6 +13,7 @@
       ./fonts.nix
       ./niri.nix
       ./ddcutil.nix
+      ./open-webui.nix
     ];
 
   nix.settings.experimental-features = [
