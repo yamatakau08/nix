@@ -21,5 +21,7 @@
 
     ./musescore.nix
     ./ffmpeg.nix
+
+    ./ollama.nix
   ];
 }
