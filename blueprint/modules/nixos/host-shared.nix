@@ -2,10 +2,12 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  programs.vim.enable = true;
+  # programs.vim.enable = true;
 
   # you can check if host is darwin by using pkgs.stdenv.isDarwin
   environment.systemPackages = [
     pkgs.btop
-  ] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xbar ]);
+  ]
+  ++ (pkgs.lib.optionals pkgs.stdenv.isLinux [ pkgs.vim ])
+  ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xbar ]);
 }
