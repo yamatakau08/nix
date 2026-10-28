@@ -23,5 +23,6 @@
     ./ffmpeg.nix
 
     ./ollama.nix
+    ./aider-chat.nix
   ];
 }
