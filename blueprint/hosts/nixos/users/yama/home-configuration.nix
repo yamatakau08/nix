@@ -24,5 +24,8 @@
 
     ./ollama.nix
     ./aider-chat.nix
+
+    ./mpv.nix
+    ./jq.nix
   ];
 }
