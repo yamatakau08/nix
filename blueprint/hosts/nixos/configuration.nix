@@ -162,4 +162,14 @@
   system.stateVersion = "26.11"; # Did you read the comment?
 
   console.keyMap = "jp106";
+
+  # for wlscreen-rec
+  # suppress error message: [AVHWDeviceContext @ 0x644082fe9ec0] Failed to initialise VAAPI connection: -1 (unknown libva error).
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+
 }
