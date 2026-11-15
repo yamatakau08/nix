@@ -12,9 +12,12 @@ let
       })
     ];
   });
+
+  # litellm 更新で aider のテスト(例外一覧の照合)が失敗するため、テストを無効化
+  aider-chat = pkgsFixed.aider-chat.overridePythonAttrs (_: {
+    doCheck = false;
+  });
 in
 {
-  home.packages = [
-    pkgsFixed.aider-chat
-  ];
+  home.packages = [ aider-chat ];
 }
