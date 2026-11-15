@@ -28,5 +28,6 @@
     ./mpv.nix
     ./jq.nix
     ./wl-screenrec.nix
+    ./slurp.nix
   ];
 }
